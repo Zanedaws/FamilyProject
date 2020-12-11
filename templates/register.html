@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href={{url_for('static', filename="styles/register.css"}}>
+</head>
+
+<body>
+    <p>{{data[0]}}</p>
+    <div class="login">
+        <form action="/login" method="post">
+            <label for="user" id="userLabel">Username:</label>
+            <input type="text" name="user" id="user">
+            <label for="pass" id="passLabel">Password:</label>
+            <input type="text" name="pass" id="pass">
+        </form>
+    </div>
+
+</body>
+
+</html>

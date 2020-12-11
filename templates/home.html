@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" href={{url_for('static', filename="styles/home.css")}}>
+    <script src="https://code.jquery.com/jquery-git.js"></script>
+</head>
+
+<body>
+
+    <div class="login">
+        <form action="/login" method="post">
+            <label for="user" id="userLabel">Username:</label>
+            <input type="text" name="user" id="user">
+            <label for="pass" id="passLabel">Password:</label>
+            <input type="password" name="pass" id="pass">
+            <input type="submit" id="submit" value="submit">
+        </form>
+    </div>
+
+</body>
+
+</html>

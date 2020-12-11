@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Your Profile
+    </title>
+    <link rel="stylesheet" href={{url_for('static', filename="profile.css")}}>
+</head>
+
+<body>
+    <p><a href={{"input/"+data[0]}}>Make input</a></p>
+
+    {% for post in data[1:] %}
+
+    <div class="card">
+        <p>{{post[3]}}</p>
+        <p>{{post[4]}}</p>
+    </div>
+
+    {% endfor %}
+
+</body>
+
+</html>
