@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Make new input
+    </title>
+<!--    <script src="https://code.jquery.com/jquery-git.js"></script>-->
+<!--    <script src={{url_for('static',filename="/scripts/input.js")}}></script>-->
+</head>
+<body>
+
+    <form action={{"/input/"+data[0]}} method="post">
+        <textarea name="memo" rows="10" cols="30"></textarea>
+        <br>
+        <input type="submit" id="submit" value="Submit Input">
+    </form>
+
+</body>
+
+
+</html>

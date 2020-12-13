@@ -4,18 +4,19 @@
     <title>Home Page</title>
     <link rel="stylesheet" href={{url_for('static', filename="styles/home.css")}}>
     <script src="https://code.jquery.com/jquery-git.js"></script>
+    <script src={{url_for('static', filename="scripts/login.js")}}></script>
 </head>
 
 <body>
-
     <div class="login">
-        <form action="/login" method="post">
+        <p id="error"></p>
+        <form>
             <label for="user" id="userLabel">Username:</label>
             <input type="text" name="user" id="user">
             <label for="pass" id="passLabel">Password:</label>
             <input type="password" name="pass" id="pass">
-            <input type="submit" id="submit" value="submit">
         </form>
+        <input type="button" id="submit" value="login">
     </div>
 
 </body>

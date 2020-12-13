@@ -1,7 +1,7 @@
 import flask
 import sqlite3
 import hashlib
-import time
+# import time
 
 
 app = flask.Flask(__name__, static_folder="./static")
@@ -37,6 +37,7 @@ def home_get():
 
 @app.route('/login', methods=["POST"])
 def login_post():
+
     userName = flask.request.form['user']
     password = flask.request.form['pass']
 
@@ -46,10 +47,8 @@ def login_post():
     c = conn.cursor()
     c.execute("SELECT * FROM users WHERE userHash=?", (userHash,))
     user = c.fetchall()
-    if len(user) == 1:
-        return flask.redirect(flask.url_for("feed_get", userHash=userHash))
-    else:
-        return flask.redirect(flask.url_for("login_get"))
+    data = flask.jsonify({"data": user, "hash": userHash}, 204)
+    return data
 
 
 @app.route('/login', methods=["GET"])
@@ -62,7 +61,7 @@ def feed_get(userHash):
     conn = sqlite3.connect("data/database.db")
     c = conn.cursor()
     c.execute("SELECT * FROM inputs")
-    return flask.render_template("feed.html")
+    return flask.render_template("feed.html", data=[userHash])
 
 
 @app.route("/profile/<userHash>", methods=["GET"])
@@ -78,6 +77,14 @@ def profile_get(userHash):
 @app.route("/input/<userHash>", methods=["GET"])
 def input_get(userHash):
     return flask.render_template("input.html", data=[userHash])
+
+
+@app.route("/input/<userHash>", methods=["POST"])
+def input_post(userHash):
+
+    # implement input creation in database
+
+    return flask.redirect(flask.url_for("feed_get", userHash=userHash))
 
 
 if __name__ == "__main__":

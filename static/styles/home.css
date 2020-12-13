@@ -46,3 +46,12 @@
 body{
     background:gainsboro;
 }
+
+#error{
+    position:relative;
+    
+/*     border: 2px black solid; */
+    color:red;
+    text-align:center;
+    top:10%;
+}

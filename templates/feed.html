@@ -7,7 +7,13 @@
 
 <body>
 
-    <p>this is the feed</p>
+    <form action={{"/input/"+data[0]}} method="get">
+        <input type="submit" id="submit" value="Make Input">
+    </form>
+
+    <div id="cardCont">
+<!-- jinja to implement cards and then use pagination later on -->
+    </div>
 
 </body>
 
