@@ -1,0 +1,14 @@
+body{
+  background-color:gainsboro;
+}
+
+#amount, #amountLabel{
+  position:relative;
+  top:10px;
+}
+
+#submit{
+  position:relative;
+  left:5%;
+  top:20px;
+}

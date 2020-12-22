@@ -3,18 +3,43 @@
 <head>
     <title>feed</title>
     <link rel="stylesheet" href={{url_for('static', filename="styles/feed.css")}}>
+    <script src="https://code.jquery.com/jquery-git.js"></script>
+    <script src={{url_for('static', filename="scripts/feed.js")}}></script>
+    <script src={{url_for('static', filename="scripts/delete.js")}}></script>
 </head>
 
 <body>
 
-    <form action={{"/input/"+data[0]}} method="get">
-        <input type="submit" id="submit" value="Make Input">
+    <form action={{"/input/"+data[0]|string+"/"+data[1]|string}} method="get">
+        <input type="submit" id="makeInput" class="submit" value="Make Input">
     </form>
 
-    <div id="cardCont">
-<!-- jinja to implement cards and then use pagination later on -->
+    <form action="/download" method="get">
+        <input type="submit" id="download" class="submit" value="Download">
+    </form>
+
+    <div id = "cardCont">
+    {% for post in data[3:] %}
+
+    <div class="card" id={{post[1]}}>
+        <button name="delete" class="delete">Delete</button>
+        <p class="memo">{{post[2]}}</p>
+        <hr>
+        <span class="amount">Miles: {{post[3]}}</span><span class="date">{{post[4]}}</span>
     </div>
 
+    {% endfor %}
+
+    </div>
+    <div id = "buttonCont">
+    {% if data[2]|int > 0 %}
+        {% for i in range((data[2]|int) + 1) %}
+
+        <button id={{i|int}} class="button">{{i}}</button>
+
+        {% endfor %}
+    {% endif %}
+    </div>
 </body>
 
 </html>

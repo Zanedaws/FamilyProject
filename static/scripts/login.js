@@ -24,7 +24,7 @@ $(document).ready(function(){
                 }
                 else
                 {
-                    window.location.replace("/feed/"+data[0].hash);
+                    window.location.replace("/feed/"+data[0].hash+"/0");
                 }
             }
         );
