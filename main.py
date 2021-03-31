@@ -9,29 +9,6 @@ from tempfile import NamedTemporaryFile
 app = flask.Flask(__name__, static_folder="./static")
 
 
-@app.route("/genUsers/awdsfh1235dsfidofaj12k35diaso2134214dsjkahfl!")
-def genUsers_get():
-
-    user = "Kara"
-    pswd = "password"
-
-    userHash = hashlib.sha256((user + pswd).encode('utf-8')).hexdigest()
-
-    conn = sqlite3.connect("data/database.db")
-    c = conn.cursor()
-    c.execute("INSERT INTO users VALUES (?,?,?)", (user, pswd, userHash))
-
-    user = "Patrick"
-    pswd = "password"
-
-    userHash = hashlib.sha256((user + pswd).encode('utf-8')).hexdigest()
-
-    c.execute("INSERT INTO users VALUES (?,?,?)", (user, pswd, userHash))
-    conn.commit()
-    conn.close()
-    return flask.redirect(flask.url_for("login_get"))
-
-
 @app.route('/', methods=["GET"])
 def home_get():
     return flask.redirect(flask.url_for("login_get"))
